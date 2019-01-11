@@ -7,32 +7,37 @@
 	<link rel="stylesheet" href="vistas/css/main.css">
 </head>
 <body>
+    <?php
+        require_once "./controladores/vistasControlador.php";
+        $vt = new vistasControlador();
+        $vistasR=$vt->obtener_vistas_controller();
+        if ($vistasR == "login") :
+            require_once "./vistas/contenidos/login.php";
+        else:
+
+    ?>
 	<!-- SideBar -->
     <?php
     include "vistas/modules/navlateral.php";
     ?>
 
 	<!-- Content page-->
-	<section class="full-box dashboard-contentPage">
+	
 		<!-- NavBar -->
         <?php
         include "vistas/modules/navbar.php";
         ?>
 		<!-- Content page -->
+        <?php require_once $vistasR; ?>
 		
-	</section>
+	
 
 	<!-- Notifications area -->
-    <?php
-        include "vistas/modules/notifi.php";
-    ?>
-	<!-- Dialog help -->
-    <?php
-        include "vistas/modules/dialog.php";
-    ?>
+  
+    <?php endif ;?>
 	<!--====== Scripts -->
     <?php
-        include "vistas/modules/script.php";
+    include "vistas/modules/script.php";
     ?>
 </body>
 </html>
